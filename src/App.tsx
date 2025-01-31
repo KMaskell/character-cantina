@@ -4,27 +4,31 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
-import { ChakraProvider } from '@chakra-ui/react';
 import BuildRoutes from './routes/routeConfig';
+import BuildNavigationLinks from './routes/buildNavigationLinks';
 import AppLayout from './components/AppLayout';
+import NavigationMenu from './components/NavigationMenu';
 
 const App = () => {
   const routes = BuildRoutes();
+  const navLinks = BuildNavigationLinks(routes);
 
   return (
-    <ChakraProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<AppLayout />}>
-            <Route index element={<Navigate to="/characters" replace />} />
-            {routes.map((route, index) => (
-              <Route key={index} path={route.path} element={route.element} />
-            ))}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Route>
-        </Routes>
-      </Router>
-    </ChakraProvider>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <AppLayout navigation={<NavigationMenu links={navLinks} />} />
+          }
+        >
+          {routes.map(({ path, element }) => (
+            <Route key={path} path={path} element={element} />
+          ))}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 };
 
