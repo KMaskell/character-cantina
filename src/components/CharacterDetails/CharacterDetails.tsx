@@ -8,6 +8,7 @@ import Homeworld from '../Homeworld';
 import { capitalise } from '../../utils/stringUtils';
 import Films from '../Films';
 import Starships from '../Starships';
+import useFavouriteManager from '../../hooks/useFavouriteManager';
 
 const CharacterDetails: FC = () => {
   const { id } = useParams();
@@ -19,6 +20,9 @@ const CharacterDetails: FC = () => {
     isError,
   } = useGetCharacterDetails(id ?? '');
 
+  const { addToFavourites, removeFromFavourites, isFavourite } =
+    useFavouriteManager();
+
   if (isLoading)
     return <LoadingSpinner message="Loading character details..." />;
 
@@ -26,11 +30,37 @@ const CharacterDetails: FC = () => {
     return <CharacterNotFound />;
   }
 
-  const { name, hair_color, eye_color, gender, homeworld, films, starships } =
-    character;
+  const {
+    name,
+    height,
+    hair_color,
+    eye_color,
+    gender,
+    homeworld,
+    films,
+    starships,
+  } = character;
+
+  const handleFavouriteClick = () => {
+    if (isFavourite(id)) {
+      removeFromFavourites(id);
+    } else {
+      addToFavourites({
+        id,
+        name,
+        height,
+        gender,
+        homeworld,
+      });
+    }
+  };
 
   const handleHomeClick = () => {
     navigate('/');
+  };
+
+  const handleGoToFavesClick = () => {
+    navigate('/favourites');
   };
 
   return (
@@ -82,12 +112,24 @@ const CharacterDetails: FC = () => {
         ) : (
           <Starships urls={starships} />
         )}
-        <Flex gap={2} justify="center">
-          <Button mt={4} colorScheme="teal" size="sm">
-            Add to Favourites
+        <Flex
+          gap={4}
+          justify="center"
+          direction={{ base: 'column', md: 'row' }}
+          mt={4}
+        >
+          <Button
+            colorScheme={isFavourite(id) ? 'red' : 'teal'}
+            size="sm"
+            onClick={handleFavouriteClick}
+          >
+            {isFavourite(id) ? 'Remove from Favourites' : 'Add to Favourites'}
           </Button>
-          <Button mt={4} size="sm" onClick={handleHomeClick}>
+          <Button size="sm" onClick={handleHomeClick}>
             Go back home
+          </Button>
+          <Button size="sm" onClick={handleGoToFavesClick} colorScheme="teal">
+            Go to Favourites
           </Button>
         </Flex>
       </Box>

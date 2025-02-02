@@ -11,3 +11,14 @@ export const extractIdFromUrl = (url: string): string | null => {
   }
   return null;
 };
+
+export const formatHeight = (heightStr: string): string => {
+  const cm = parseInt(heightStr, 10);
+  if (isNaN(cm)) return 'Invalid height';
+  
+  const inches = cm / 2.54;
+  const feet = Math.floor(inches / 12);
+  const remainingInches = Math.round(inches % 12);
+  
+  return `${feet}'${remainingInches}" (${cm}cm)`;
+};

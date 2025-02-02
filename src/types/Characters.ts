@@ -17,4 +17,12 @@ export type Character = {
   url: string;
 };
 
+export interface Favourite {
+  id?: string;
+  name: string;
+  height: string;
+  gender: string;
+  homeworld: string;
+}
+
 

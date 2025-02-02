@@ -1,6 +1,6 @@
-import { Heading } from '@chakra-ui/react';
 import Characters from '../components/Characters';
 import CharacterDetails from '../components/CharacterDetails';
+import Favourites from '../components/Favourites';
 
 const BuildRoutes = () => [
   {
@@ -14,7 +14,7 @@ const BuildRoutes = () => [
   },
   {
     path: '/favourites',
-    element: <Heading as="h1">Favourites</Heading>,
+    element: <Favourites />,
     label: 'Favourites',
   },
 ];
