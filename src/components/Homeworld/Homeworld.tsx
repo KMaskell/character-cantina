@@ -9,7 +9,7 @@ interface HomeworldProps {
 const Homeworld: FC<HomeworldProps> = ({ url }) => {
   const { homeworld, isError, isLoading } = useGetHomeworld(url);
 
-  if (isLoading) return <Spinner size="sm" />;
+  if (isLoading) return <Spinner size="sm" data-testid="loading-spinner" />;
 
   if (isError || !homeworld) {
     return (

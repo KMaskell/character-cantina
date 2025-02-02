@@ -9,7 +9,7 @@ interface StarshipsProps {
 const Starships: FC<StarshipsProps> = ({ urls }) => {
   const { starships, isError, isLoading } = useGetStarships(urls);
 
-  if (isLoading) return <Spinner size="sm" />;
+  if (isLoading) return <Spinner size="sm" data-testid="loading-spinner" />;
 
   if (isError || !starships) {
     return (

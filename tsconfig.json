@@ -9,7 +9,8 @@
     "moduleResolution": "node",
     "noEmit": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "types": ["cypress", "node"]
   },
   "include": [
     "src"

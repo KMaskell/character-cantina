@@ -41,6 +41,7 @@ const CharacterTable: FC<CharacterTableProps> = ({
             _hover={{
               bg: 'blackAlpha.600',
             }}
+            data-testid={character.name}
           >
             <Td p={{ base: 2, md: 4 }}>{character.name}</Td>
             <Td p={{ base: 2, md: 4 }}>{capitalise(character.gender)}</Td>
