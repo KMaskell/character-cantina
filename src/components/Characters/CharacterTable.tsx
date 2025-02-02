@@ -38,7 +38,9 @@ const CharacterTable: FC<CharacterTableProps> = ({
             key={character.name}
             onClick={() => onCharacterClick(character.url)}
             cursor="pointer"
-            _hover={{ bg: 'rgba(173, 216, 230, 0.2)' }}
+            _hover={{
+              bg: 'blackAlpha.600',
+            }}
           >
             <Td p={{ base: 2, md: 4 }}>{character.name}</Td>
             <Td p={{ base: 2, md: 4 }}>{capitalise(character.gender)}</Td>

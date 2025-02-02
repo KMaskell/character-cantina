@@ -5,6 +5,7 @@ import useGetCharacters from '../../hooks/useGetCharacters';
 import LoadingSpinner from '../LoadingSpinner';
 import CharacterTable from './CharacterTable';
 import Toast from '../Toast';
+import { extractIdFromUrl } from '../../utils/stringUtils';
 
 const Characters: FC = () => {
   const [page, setPage] = useState(1);
@@ -37,7 +38,8 @@ const Characters: FC = () => {
   };
 
   const handleCharacterClick = (url: string) => {
-    navigate(`/character/${url}`);
+    const id = extractIdFromUrl(url);
+    navigate(`/character-details/${id}`);
   };
 
   const hasCharacters = filteredCharacters && filteredCharacters.length > 0;
@@ -51,7 +53,7 @@ const Characters: FC = () => {
       </Flex>
 
       <Flex direction="column" flex="1" overflowY="auto" p={4}>
-        {!hasCharacters ? (
+        {!characters ? (
           <Text textAlign="center">No characters were found</Text>
         ) : (
           <>
