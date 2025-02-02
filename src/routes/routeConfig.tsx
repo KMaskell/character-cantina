@@ -1,5 +1,6 @@
 import { Heading } from '@chakra-ui/react';
 import Characters from '../components/Characters';
+import CharacterDetails from '../components/CharacterDetails';
 
 const BuildRoutes = () => [
   {
@@ -8,8 +9,8 @@ const BuildRoutes = () => [
     label: 'Characters',
   },
   {
-    path: '/character/:uid',
-    element: <Heading as="h1">Character Details</Heading>,
+    path: '/character-details/:id',
+    element: <CharacterDetails />,
   },
   {
     path: '/favourites',

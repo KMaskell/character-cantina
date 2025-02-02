@@ -13,7 +13,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({ links }) => {
     <Flex
       as="nav"
       aria-label="Main navigation"
-      bg="rgba(10, 10, 10, 0.6)"
+      bg="blackAlpha.700"
       backdropFilter="blur(8px)"
       px={6}
       py={3}
@@ -21,7 +21,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({ links }) => {
       align="center"
       gap={6}
       mx="auto"
-      boxShadow="0px 4px 10px rgba(0, 0, 0, 0.3)"
+      boxShadow="lg"
     >
       {links.map((link) => {
         const isActive = location.pathname === link.path;
@@ -44,12 +44,12 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({ links }) => {
               textDecoration: 'none',
               color: 'yellow.300',
               transform: 'scale(1.05)',
-              textShadow: '0px 0px 8px rgba(255, 255, 0, 0.6)',
+              textShadow: '0px 0px 8px yellow.500',
             }}
             _focus={{
               outline: 'none',
               color: 'yellow.300',
-              boxShadow: '0px 0px 15px rgba(255, 255, 0, 0.5)',
+              boxShadow: '0px 0px 15px yellow.500',
               transform: 'scale(1.07)',
             }}
           >
@@ -62,7 +62,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({ links }) => {
                 bottom="-3px"
                 height="2px"
                 bg="yellow.400"
-                boxShadow="0px 0px 6px rgba(255, 255, 0, 0.5)"
+                boxShadow="0px 0px 6px yellow.500"
                 borderRadius="full"
               />
             )}
