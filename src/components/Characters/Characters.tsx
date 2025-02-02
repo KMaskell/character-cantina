@@ -46,8 +46,17 @@ const Characters: FC = () => {
 
   return (
     <Flex direction="column" height="100vh" overflow="hidden">
-      <Flex flexShrink={0} p={4}>
-        <Heading as="h1" textAlign={{ base: 'center', md: 'left' }}>
+      <Flex
+        w="100%"
+        flexShrink={0}
+        p={4}
+        justify={{ base: 'center', md: 'flex-start' }}
+      >
+        <Heading
+          as="h1"
+          textAlign={{ base: 'center', md: 'left' }}
+          color="teal.400"
+        >
           Characters
         </Heading>
       </Flex>
