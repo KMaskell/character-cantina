@@ -21,13 +21,13 @@ const CharacterTable: FC<CharacterTableProps> = ({
     <Table variant="simple" size="sm">
       <Thead>
         <Tr>
-          <Th fontSize={{ base: '12', md: '14' }} p={{ base: 2, md: 4 }}>
+          <Th fontSize={{ base: '12', md: '14' }} p={4}>
             Name
           </Th>
-          <Th fontSize={{ base: '12', md: '14' }} p={{ base: 2, md: 4 }}>
+          <Th fontSize={{ base: '12', md: '14' }} p={4}>
             Gender
           </Th>
-          <Th fontSize={{ base: '12', md: '14' }} p={{ base: 2, md: 4 }}>
+          <Th fontSize={{ base: '12', md: '14' }} p={4}>
             Homeworld
           </Th>
         </Tr>
@@ -42,9 +42,9 @@ const CharacterTable: FC<CharacterTableProps> = ({
               bg: 'blackAlpha.600',
             }}
           >
-            <Td p={{ base: 2, md: 4 }}>{character.name}</Td>
-            <Td p={{ base: 2, md: 4 }}>{capitalise(character.gender)}</Td>
-            <Td p={{ base: 2, md: 4 }}>
+            <Td p={4}>{character.name}</Td>
+            <Td p={4}>{capitalise(character.gender)}</Td>
+            <Td p={4}>
               <Homeworld url={character.homeworld} />
             </Td>
           </Tr>

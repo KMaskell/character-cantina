@@ -3,6 +3,7 @@ import { Box, Heading, Text, Button, Flex } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import FavouriteCard from './FavouriteCard';
 import useFavouriteManager from '../../hooks/useFavouriteManager';
+import { capitalise, formatHeight } from '../../utils/stringUtils';
 
 const Favourites: FC = () => {
   const navigate = useNavigate();
@@ -30,20 +31,29 @@ const Favourites: FC = () => {
           <Text color="gray.500">No favourites added yet</Text>
         ) : (
           <Flex wrap="wrap" gap={4} justify="center">
-            {favourites.map((fave) => (
-              <FavouriteCard
-                key={fave.id}
-                name={fave.name}
-                height={fave.height}
-                gender={fave.gender}
-                homeworld={fave.homeworld}
-                onRemove={() => removeFromFavourites(fave.id)}
-              />
-            ))}
+            {favourites.map((fave) => {
+              const formattedGender = capitalise(fave.gender);
+              const formattedHeight = formatHeight(fave.height);
+              return (
+                <FavouriteCard
+                  key={fave.id}
+                  name={fave.name}
+                  height={formattedHeight}
+                  gender={formattedGender}
+                  homeworld={fave.homeworld}
+                  onRemove={() => removeFromFavourites(fave.id)}
+                />
+              );
+            })}
           </Flex>
         )}
 
-        <Flex justify={{ base: 'center', md: 'flex-start' }} mt={6} w="100%">
+        <Flex
+          justify={{ base: 'center', md: 'flex-start' }}
+          mt={6}
+          mb={{ base: 10, md: 4 }}
+          w="100%"
+        >
           <Button
             colorScheme="teal"
             size="sm"

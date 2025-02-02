@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { Text, Button, Card, CardBody, Heading, Flex } from '@chakra-ui/react';
 import Homeworld from '../Homeworld';
-import { capitalise, formatHeight } from '../../utils/stringUtils';
 
 interface FavouriteCardProps {
   name: string;
@@ -45,13 +44,13 @@ const FavouriteCard: FC<FavouriteCardProps> = ({
             <Text as="span" color="teal.300" fontWeight="bold">
               Gender:
             </Text>{' '}
-            {capitalise(gender)}
+            {gender}
           </Text>
           <Text fontSize="md" fontWeight="semibold">
             <Text as="span" color="teal.300" fontWeight="bold">
               Height:
             </Text>{' '}
-            {formatHeight(height)}
+            {height}
           </Text>
           <Flex fontSize="md" color="gray.100" gap={1}>
             <Text as="span" color="teal.300" fontWeight="bold">
