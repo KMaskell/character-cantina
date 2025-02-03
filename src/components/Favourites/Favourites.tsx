@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Box, Heading, Text, Button, Flex } from '@chakra-ui/react';
+import { Heading, Text, Button, Flex } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import FavouriteCard from './FavouriteCard';
 import useFavouriteManager from '../../hooks/useFavouriteManager';

@@ -9,7 +9,7 @@ interface FilmsProps {
 const Films: FC<FilmsProps> = ({ urls }) => {
   const { films, isError, isLoading } = useGetFilms(urls);
 
-  if (isLoading) return <Spinner size="sm" />;
+  if (isLoading) return <Spinner size="sm" data-testid="loading-spinner" />;
 
   if (isError || !films) {
     return (
