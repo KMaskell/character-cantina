@@ -43,7 +43,12 @@ const Favourites: FC = () => {
           </Flex>
         )}
 
-        <Flex justify={{ base: 'center', md: 'flex-start' }} mt={6} w="100%">
+        <Flex
+          justify={{ base: 'center', md: 'flex-start' }}
+          mt={6}
+          mb={{ base: 10, md: 4 }}
+          w="100%"
+        >
           <Button
             colorScheme="teal"
             size="sm"
