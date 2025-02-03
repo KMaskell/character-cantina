@@ -45,7 +45,11 @@ const Characters: FC = () => {
   const hasCharacters = filteredCharacters && filteredCharacters.length > 0;
 
   return (
-    <Flex direction="column" height="100vh" overflow="hidden">
+    <Flex
+      direction="column"
+      height={{ base: '', md: '100vh' }}
+      overflow="hidden"
+    >
       <Flex
         w="100%"
         flexShrink={0}
@@ -93,7 +97,7 @@ const Characters: FC = () => {
         )}
 
         {hasCharacters && (
-          <Flex justify="space-between" my={4}>
+          <Flex justify="space-between" my={4} mt={{ base: 10 }}>
             <Button
               size="sm"
               onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
