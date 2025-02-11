@@ -1,28 +1,34 @@
+
 import '@testing-library/jest-dom';
 import { ReactNode } from 'react';
-
+import 'cross-fetch/polyfill';
+ 
+import { BroadcastChannel } from 'worker_threads';
+ 
+Reflect.set(globalThis, 'BroadcastChannel', BroadcastChannel);
+ 
 class CustomTextEncoder {
   encode(input?: string): Uint8Array {
     return new Uint8Array(Buffer.from(input || ''));
   }
 }
-
+ 
 class CustomTextDecoder {
   decode(input?: Uint8Array): string {
     return Buffer.from(input || []).toString();
   }
 }
-
+ 
 Object.assign(global, {
   TextEncoder: CustomTextEncoder,
   TextDecoder: CustomTextDecoder,
 });
-
+ 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   BrowserRouter: ({ children }: { children: ReactNode }) => children,
-  Routes: ({ children }: { children: ReactNode }) => children,
-  Route: ({ children }: { children: ReactNode }) => children,
+  // Routes: ({ children }: { children: ReactNode }) => children,
+  // Route: ({ children }: { children: ReactNode }) => children,
   useNavigate: () => jest.fn(),
   useLocation: () => ({
     pathname: '/',
@@ -31,13 +37,13 @@ jest.mock('react-router-dom', () => ({
     state: null,
     key: '5nvxpbdafa',
   }),
-  useParams: () => ({}),
+  // useParams: () => ({}),
 }));
-
+ 
 if (typeof window !== 'undefined') {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
-    value: jest.fn().mockImplementation(query => ({
+    value: jest.fn().mockImplementation((query) => ({
       matches: false,
       media: query,
       onchange: null,
@@ -49,7 +55,7 @@ if (typeof window !== 'undefined') {
     })),
   });
 }
-
+ 
 const originalError = console.error;
 beforeAll(() => {
   console.error = (...args: any[]) => {
@@ -62,7 +68,8 @@ beforeAll(() => {
     originalError.call(console, ...args);
   };
 });
-
+ 
 afterAll(() => {
   console.error = originalError;
 });
+ 
